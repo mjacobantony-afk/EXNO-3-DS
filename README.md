@@ -31,8 +31,44 @@ We use this categorical data encoding technique when the features are nominal(do
 • Yeojohnson method
 
 # CODING AND OUTPUT:
-       # INCLUDE YOUR CODING AND OUTPUT SCREENSHOTS HERE
+```
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import LabelEncoder, PowerTransformer
+from scipy.stats import boxcox
+
+df = pd.read_csv("D:\\Data Science\\CSV files\\Encoding Data.csv")
+
+df.dropna(inplace=True) 
+
+ord_2_mapping = {'Cold': 0, 'Warm': 1, 'Hot': 2}
+df['ord_2_encoded'] = df['ord_2'].map(ord_2_mapping)
+
+le = LabelEncoder()
+df['bin_1_encoded'] = le.fit_transform(df['bin_1'])
+df['bin_2_encoded'] = le.fit_transform(df['bin_2'])
+
+df = pd.get_dummies(df, columns=['nom_0'], prefix='nom_0')
+
+df['ord_2_encoded'] = df['ord_2_encoded'] + 1
+
+df['ord_2_log'] = np.log(df['ord_2_encoded'])
+
+df['ord_2_reciprocal'] = 1 / df['ord_2_encoded']
+
+df['ord_2_sqrt'] = np.sqrt(df['ord_2_encoded'])
+
+df['ord_2_boxcox'], _ = boxcox(df['ord_2_encoded'])
+
+pt = PowerTransformer(method='yeo-johnson')
+df['ord_2_yeojohnson'] = pt.fit_transform(df[['ord_2_encoded']])
+
+df.to_csv("Fully_Transformed_Encoding_Data.csv", index=False)
+print("All transformations applied and saved to 'Fully_Transformed_Encoding_Data.csv'")
+```
+OUTPUT
+We have saved the changes to a dataset named Fully_Transformed_Encoded_Data.csv. 
 # RESULT:
-       # INCLUDE YOUR RESULT HERE
+We have performed the above mentioned data encoding and transformation processes on the dataset and obtained new dataset. 
 
        
