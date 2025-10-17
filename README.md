@@ -68,6 +68,9 @@ print("All transformations applied and saved to 'Fully_Transformed_Encoding_Data
 ```
 OUTPUT
 We have saved the changes to a dataset named Fully_Transformed_Encoded_Data.csv. 
+<img width="1918" height="507" alt="DS Ex3 - Output 1" src="https://github.com/user-attachments/assets/846e2081-f37f-4439-b338-8b40f8372e9d" />
+<img width="1848" height="422" alt="DS Ex3 - Output 2" src="https://github.com/user-attachments/assets/b456a2ef-339d-4ee2-b7c0-12affa1bcd83" />
+
 # RESULT:
 We have performed the above mentioned data encoding and transformation processes on the dataset and obtained new dataset. 
 
